@@ -1,15 +1,24 @@
-<h1>Mocktails!</h1>
+<h1>Welcome to the Brazilian Barzin 🍸🍹</h1>
+
+<p id="notice"><%= notice %></p>
+
+<div class="container">
+  <% @cocktails.each do |cocktail| %>
+  <div class="card-trip">
+    <%= cl_image_tag(cocktail.photo) %>
+    <div class="card-trip-infos">
+      <div>
+        <h2><%= cocktail.name %></h2>
+        <% cocktail.doses.each do |dose| %>
+          <p><%= dose.ingredient.name %> (<%= dose.description %>)</p>
+        <% end %>
+      </div>
+      <h2 class="card-trip-pricing">€9.99</h2>
+      <p><%= link_to 'Show', cocktail %></p>
+      <p><%= link_to 'Destroy', cocktail, method: :delete, data: { confirm: 'Are you sure?' } %></p>
+    </div>
+  </div>
+  <% end %>
+</div>
 
 <%= link_to 'Create new cocktail', new_cocktail_path, class: 'btn btn-primary ' %>
-
-<% @cocktails.each do |cktl| %>
-  <div>
-    <h3><%= cktl.name %></h3>
-    <ul>
-      <% cktl.doses.each do |dose| %>
-        <li><%= dose.ingredient.name %> (<%= dose.amount %>)</li>
-      <% end %>
-    </ul>
-    <%= link_to 'Add ingredient (dose)', new_cocktail_dose_path(cktl) %>
-  </div>
-<% end %>

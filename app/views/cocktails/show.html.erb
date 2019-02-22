@@ -1,0 +1,8 @@
+<%= cl_image_tag @cocktail.photo, height: 100, width: 100, crop: :fill%>
+
+<p>
+  <strong>Title:</strong>
+  <%= @cocktail.name %>
+</p>
+
+<%= link_to 'Back', cocktails_path %>
